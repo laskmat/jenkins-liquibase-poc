@@ -11,3 +11,13 @@ services:
       - "50000:50000"
     volumes:
       - ./jenkins_home:/var/jenkins_home
+
+  liquibase_service:
+    build:
+      context: ./liquibase
+      dockerfile: Dockerfile
+    container_name: liquibase
+    volumes:
+      - ./liquibase_changelog:/liquibase/changelog
+    env_file: ./variables.env    
+     
