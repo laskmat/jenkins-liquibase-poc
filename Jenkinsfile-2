@@ -25,4 +25,9 @@ pipeline {
       }      
     }
   }
+  post {
+    always {
+        archiveArtifacts artifacts: '*.xml', followSymlinks: false, onlyIfSuccessful: true
+    }
+  }  
 }
