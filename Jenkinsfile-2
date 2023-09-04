@@ -3,12 +3,18 @@ pipeline {
     dockerContainer { image 'laskmat/liquibase:git423' }
   }
   stages {
-    stage('list files and folders') {
+    stage('env check') {
+      steps {
+            sh 'env'
+      }
+    }  
+    stages {
+      stage ('setup default schema') {
         steps {
-            sh 'ls /liquibase/workspace'
+          sh 'export liquibase.defaultSchemaName=PUBLIC'
         }
-    }
-      
+      }
+    }    
     stage('Status') {
       steps {
           withCredentials([usernamePassword(credentialsId: '4f53ec09-6106-4a31-b1bc-b69cf00c4229', passwordVariable: 'password', usernameVariable: 'username')]) {
