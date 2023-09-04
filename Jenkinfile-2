@@ -3,10 +3,20 @@ pipeline {
     dockerContainer { image 'liquibase/liquibase:4.23' }
   }
   stages {
+    stage('list files and folders') {
+        steps {
+            sh 'ls /liquibase/workspace'
+        }
+    }
+      
     stage('Status') {
       steps {
-        sh 'liquibase status --url="jdbc:snowflake://https://qu13708.eu-central-1.snowflakecomputing.com/?user=$USER_ID&warehouse=POC_WAREHOUSE&db=DBT_VAULT_POC&schema=PUBLIC" --changeLogFile=migrations/dataset_wrapper.xml --username=$USER_ID  --password=$USER_PASSWORD'
+          withCredentials([usernamePassword(credentialsId: '4f53ec09-6106-4a31-b1bc-b69cf00c4229', passwordVariable: 'password', usernameVariable: 'username')]) {
+
+        sh 'liquibase status --url="jdbc:snowflake://https://qu13708.eu-central-1.snowflakecomputing.com/?user=MATEUSZ_LASKOWSKI&warehouse=POC_WAREHOUSE&db=DBT_VAULT_POC&schema=PUBLIC" --changeLogFile=dataset_wrapper.xml --username=$username  --password=$password'
+          }
       }
+
     }
   }
 }
