@@ -7,12 +7,7 @@ pipeline {
       steps {
             sh 'env'
       }
-    }  
-    stage ('setup default schema') {
-        steps {
-          sh 'export liquibase.defaultSchemaName=PUBLIC'
-        }
-      }
+    }
     stage('Status') {
       steps {
           withCredentials([usernamePassword(credentialsId: '4f53ec09-6106-4a31-b1bc-b69cf00c4229', passwordVariable: 'password', usernameVariable: 'username')]) {
