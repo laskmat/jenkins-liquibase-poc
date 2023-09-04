@@ -1,0 +1,12 @@
+pipeline {
+  agent {
+    dockerContainer { image 'liquibase/liquibase:4.23' }
+  }
+  stages {
+    stage('Status') {
+      steps {
+        sh 'liquibase status --url="jdbc:snowflake://https://qu13708.eu-central-1.snowflakecomputing.com/?user=$USER_ID&warehouse=POC_WAREHOUSE&db=DBT_VAULT_POC&schema=PUBLIC" --changeLogFile=migrations/dataset_wrapper.xml --username=$USER_ID  --password=$USER_PASSWORD'
+      }
+    }
+  }
+}

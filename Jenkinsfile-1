@@ -1,0 +1,14 @@
+pipeline {
+    agent {
+        dockerContainer {
+            image 'liquibase/liquibase:4.23'
+         }
+    }
+    stages {
+        stage('Test') {
+            steps {
+                sh 'liquibase --version'
+            }
+        }
+    }
+}
