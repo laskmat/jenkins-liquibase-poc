@@ -1,3 +1,6 @@
-FROM liquibase/liquibase:4.23
-COPY snowflake-jdbc-3.14.1.jar /internal/lib/
-COPY liquibase.docker.properties /liquibase/liquibase.docker.properties
+FROM liquibase/liquibase:4.23.1
+USER root
+RUN apt update -y
+RUN apt install -y git
+
+USER liquibase

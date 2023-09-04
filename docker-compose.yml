@@ -18,9 +18,7 @@ services:
     build:
       context: ./liquibase
       dockerfile: Dockerfile
-    container_name: liquibase
-    volumes:
-      - ./liquibase_changelog:/liquibase/changelog
-    env_file: ./variables.env
+    container_name: liquibase_git
     command: sleep 9999999999999999999
+
      
