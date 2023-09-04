@@ -1,6 +1,6 @@
 pipeline {
   agent {
-    dockerContainer { image 'liquibase/liquibase:4.23' }
+    dockerContainer { image 'laskmat/liquibase:git423' }
   }
   stages {
     stage('list files and folders') {
