@@ -13,7 +13,7 @@ pipeline {
       steps {
           withCredentials([usernamePassword(credentialsId: '4f53ec09-6106-4a31-b1bc-b69cf00c4229', passwordVariable: 'password', usernameVariable: 'username')]) {
 
-        sh 'liquibase status --url="jdbc:snowflake://https://qu13708.eu-central-1.snowflakecomputing.com/?user=MATEUSZ_LASKOWSKI&warehouse=POC_WAREHOUSE&db=DBT_VAULT_POC&schema=PUBLIC" --changeLogFile=dataset_wrapper.xml --classpath=/liquibase/changelog:/liquibase/classpath/schema-impl.jar --username=$username  --password=$password'
+        sh 'liquibase status --url="jdbc:snowflake://https://qu13708.eu-central-1.snowflakecomputing.com/?user=MATEUSZ_LASKOWSKI&warehouse=POC_WAREHOUSE&db=DBT_VAULT_POC&schema=PUBLIC" --changeLogFile=dataset_wrapper.xml --defaultsFile=/liquibase/liquibase.properties --username=$username  --password=$password'
           }
       }
 
