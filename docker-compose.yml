@@ -9,8 +9,10 @@ services:
     ports:
       - "8080:8080"
       - "50000:50000"
+      - "2375:2375"
     volumes:
       - ./jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
 
   liquibase_service:
     build:
@@ -19,5 +21,6 @@ services:
     container_name: liquibase
     volumes:
       - ./liquibase_changelog:/liquibase/changelog
-    env_file: ./variables.env    
+    env_file: ./variables.env
+    command: sleep 9999999999999999999
      
