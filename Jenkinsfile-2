@@ -8,7 +8,7 @@ pipeline {
             sh 'env'
       }
     }  
-    stages {
+    stage {
       stage ('setup default schema') {
         steps {
           sh 'export liquibase.defaultSchemaName=PUBLIC'
