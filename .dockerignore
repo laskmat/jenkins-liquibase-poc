@@ -1,6 +1,9 @@
 .git/
 *.md
 *.odt
-
+*.pdf
+*.xml
+*.yml
+Jenkinsfile*
 jenkins_home/
 liquibase_changelog/
