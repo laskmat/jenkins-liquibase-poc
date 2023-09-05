@@ -5,21 +5,21 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
     <property name="tablespace" value="taxolite"/>
 
-    <changeSet id="core-engine-2023-03-20-541" author="kkmecik">
+    <changeSet id="core-engine-2023-03-20-542" author="kkmecik">
 		<delete tableName = "Testowa_tabela">
-			<where> nazwa = 'test5'</where>
+			<where> Nazwa = 'test5'</where>
 		</delete>
         <delete tableName = "Testowa_tabela">
-			<where> nazwa = 'test6'</where>
+			<where> Nazwa = 'test6'</where>
 		</delete>
         <delete tableName = "Testowa_tabela">
-			<where> nazwa = 'test7'</where>
+			<where> Nazwa = 'test7'</where>
 		</delete>
         <delete tableName = "Testowa_tabela">
-			<where> nazwa = 'test8'</where>
+			<where> Nazwa = 'test8'</where>
 		</delete>
         <delete tableName = "Testowa_tabela">
-			<where> nazwa = 'test9'</where>
+			<where> Nazwa = 'test9'</where>
 		</delete>
 	</changeSet>
 </databaseChangeLog>
