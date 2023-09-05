@@ -10,7 +10,7 @@ pipeline {
     }
     stage('Status') {
       steps {
-          withCredentials([usernamePassword(credentialsId: '716ce2d8-8685-4e59-8b9d-8f946ed9283e', passwordVariable: 'password', usernameVariable: 'username')]) {
+          withCredentials([usernamePassword(credentialsId: '2c2f0026-d05c-4941-a84a-51313ea29d7f', passwordVariable: 'password', usernameVariable: 'username')]) {
 
             sh 'liquibase status --url="jdbc:snowflake://https://$account.snowflakecomputing.com/?user=$username&warehouse=$warehouse&db=$db&schema=$schema&role=$role" --changeLogFile=dataset_wrapper.xml  --username=$username  --password=$password'
           }
@@ -18,7 +18,7 @@ pipeline {
     }
     stage('Do nations modifications') {
       steps {
-          withCredentials([usernamePassword(credentialsId: '716ce2d8-8685-4e59-8b9d-8f946ed9283e', passwordVariable: 'password', usernameVariable: 'username')]) {
+          withCredentials([usernamePassword(credentialsId: '2c2f0026-d05c-4941-a84a-51313ea29d7f', passwordVariable: 'password', usernameVariable: 'username')]) {
 
             sh 'liquibase update --url="jdbc:snowflake://https://$account.snowflakecomputing.com/?user=$username&warehouse=$warehouse&db=$db&schema=$schema&role=$role" --changeLogFile=dataset_wrapper.xml  --username=$username  --password=$password'
           }
