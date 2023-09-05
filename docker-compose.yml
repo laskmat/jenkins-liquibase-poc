@@ -19,6 +19,5 @@ services:
       context: ./liquibase
       dockerfile: Dockerfile
     container_name: liquibase_git
-    command: sleep 9999999999999999999
 
      
