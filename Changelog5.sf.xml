@@ -5,7 +5,7 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
     <property name="tablespace" value="taxolite"/>
 	<!--CHANGESET TWORZENIE TABELI-->
-	<changeSet id="core-engine-2023-03-20-3015" author="kkmiecik">
+	<changeSet id="core-engine-2023-03-20-3016" author="kkmiecik">
 		<createTable tableName="Testowa_tabela" tablespace="${tablespace}">
             <column name="id" type="INTEGER">
                 <constraints primaryKey="true" nullable="false"/>
@@ -19,49 +19,49 @@
         </createTable>
 	</changeSet>
 	<!--CHANGESET TEST preCondition (MARK_RAN) czy działa i INSERT do tabeli -->
-    <changeSet id="core-engine-2023-03-20-3025" author="kkmiecik">
+    <changeSet id="core-engine-2023-03-20-3026" author="kkmiecik">
 		<insert tableName="Testowa_tabela">
 			<column name="id" value="1"/>
 			<column name="DATE_MODIFIED" value="2021-05-26"/>
 			<column name="Nazwa" value="test1"/>
 		</insert>
 		<insert tableName="Testowa_tabela">
-			<column name="id" value="12"/>
+			<column name="id" value="2"/>
 			<column name="DATE_MODIFIED" value="2019-05-12"/>
 			<column name="Nazwa" value="test2"/>
 		</insert>	
 		<insert tableName="Testowa_tabela">	
-			<column name="id" value="33"/>
+			<column name="id" value="3"/>
 			<column name="DATE_MODIFIED" value="2020-11-16"/>
 			<column name="Nazwa" value="test3"/>
 		</insert>	
 		<insert tableName="Testowa_tabela">			
-			<column name="id" value="66"/>
+			<column name="id" value="4"/>
 			<column name="DATE_MODIFIED" value="2017-02-01"/>
 			<column name="Nazwa" value="test4"/>
 		</insert>	
 		<insert tableName="Testowa_tabela">			
-			<column name="id" value="88"/>
+			<column name="id" value="5"/>
 			<column name="DATE_MODIFIED" value="2018-07-12"/>
 			<column name="Nazwa" value="test5"/>
 		</insert>	
 		<insert tableName="Testowa_tabela">			
-			<column name="id" value="2A"/>
+			<column name="id" value="6"/>
 			<column name="DATE_MODIFIED" value="2023-02-01"/>
 			<column name="Nazwa" value="test6"/>
 		</insert>
 		<insert tableName="Testowa_tabela">			
-			<column name="id" value="AA"/>
+			<column name="id" value="7"/>
 			<column name="DATE_MODIFIED" value="2023-02-02"/>
 			<column name="Nazwa" value="test7"/>
 		</insert>
 		<insert tableName="Testowa_tabela">			
-			<column name="id" value="BB"/>
+			<column name="id" value="8"/>
 			<column name="DATE_MODIFIED" value="2023-02-03"/>
 			<column name="Nazwa" value="test8"/>
 		</insert>
 		<insert tableName="Testowa_tabela">			
-			<column name="id" value="CC"/>
+			<column name="id" value="9"/>
 			<column name="DATE_MODIFIED" value="2023-02-03"/>
 			<column name="Nazwa" value="test9"/>
 		</insert>
