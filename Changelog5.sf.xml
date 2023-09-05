@@ -5,7 +5,7 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
     <property name="tablespace" value="taxolite"/>
 	<!--CHANGESET TWORZENIE TABELI-->
-	<changeSet id="core-engine-2023-03-20-3016" author="kkmiecik">
+	<changeSet id="core-engine-2023-03-20-3041" author="kkmiecik">
 		<createTable tableName="Testowa_tabela" tablespace="${tablespace}">
             <column name="id" type="INTEGER">
                 <constraints primaryKey="true" nullable="false"/>
@@ -19,7 +19,7 @@
         </createTable>
 	</changeSet>
 	<!--CHANGESET TEST preCondition (MARK_RAN) czy działa i INSERT do tabeli -->
-    <changeSet id="core-engine-2023-03-20-3026" author="kkmiecik">
+    <changeSet id="core-engine-2023-03-20-3042" author="kkmiecik">
 		<insert tableName="Testowa_tabela">
 			<column name="id" value="1"/>
 			<column name="DATE_MODIFIED" value="2021-05-26"/>
