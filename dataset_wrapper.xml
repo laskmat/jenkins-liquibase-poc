@@ -10,7 +10,9 @@
                         http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd 
                         http://www.liquibase.org/xml/ns/dbchangelog 
                         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
-  <include file="nations-v01.xml"/>
-  <include file="nations-v02.xml"/>
+  <include file="Changelog1.sf.xml"/>
+  <include file="Changelog2.sf.xml"/>
+  <include file="Changelog3.sf.xml"/>
+  <include file="Changelog4.sf.xml"/>
 
 </databaseChangeLog>
