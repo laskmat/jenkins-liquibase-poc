@@ -41,8 +41,7 @@
 		<createProcedure 
 		encoding="UTF-8"
 		procedureName="FirstTest"
-		relativeToChangelogFile="true"
-		schemaName="LIQUIBASE">
+		relativeToChangelogFile="true">
 			CREATE OR REPLACE PROCEDURE OUTPUT_MESSAGE_2("MESSAGE" VARCHAR(16777216))
 				RETURNS VARCHAR(16777216)
 				LANGUAGE SQL

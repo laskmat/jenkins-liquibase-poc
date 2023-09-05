@@ -7,7 +7,7 @@
 
 	<!--TEST DROP Tabeli -->
 	<changeSet id="core-engine-2023-03-20-3031" author="kkmiecik">
-		<dropTable tableName="CORE_TERYT_PROVINCE2"/>
+		<dropTable tableName="CORE_TERYT_PROVINCE"/>
 	</changeSet>
 
 </databaseChangeLog>
