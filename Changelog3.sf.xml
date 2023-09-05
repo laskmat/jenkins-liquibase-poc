@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog logicalFilePath="core-engine/tables.xml"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <property name="tablespace" value="taxolite"/>
+
+    <changeSet id="core-engine-2023-03-20-541" author="kkmecik">
+		<delete tableName = "Testowa_tabela">
+			<where> nazwa = 'test5'</where>
+		</delete>
+        <delete tableName = "Testowa_tabela">
+			<where> nazwa = 'test6'</where>
+		</delete>
+        <delete tableName = "Testowa_tabela">
+			<where> nazwa = 'test7'</where>
+		</delete>
+        <delete tableName = "Testowa_tabela">
+			<where> nazwa = 'test8'</where>
+		</delete>
+        <delete tableName = "Testowa_tabela">
+			<where> nazwa = 'test9'</where>
+		</delete>
+	</changeSet>
+</databaseChangeLog>
