@@ -7,7 +7,7 @@
 				   logicalFilePath="core-engine/tables.xml">
     <property name="tablespace" value="taxolite"/>
 	<!--Test tworzenia podstawowej tabeli -->
-    <changeSet id="core-engine-2023-03-23-0106" author="kkmiecik">
+    <changeSet id="core-engine-2023-03-23-0109" author="kkmiecik">
         <createTable tableName="CORE_TERYT_PROVINCE" tablespace="${tablespace}">
             <column name="CODE" type="NVARCHAR(2)">
                 <constraints primaryKey="true" nullable="false"/>
@@ -32,7 +32,7 @@
         </createTable>
 	</changeSet>
 	<!--TEST preCondition (CONTINUE) i tworzenie procedur -->
-    <changeSet id="core-engine-2023-03-23-0107" author="kkmiecik">
+    <changeSet id="core-engine-2023-03-23-0110" author="kkmiecik">
 		<preConditions onFail="CONTINUE" onFailMessage="work">
 			<sqlCheck expectedResult = "0">
 				SELECT COUNT(*) FROM CORE_TERYT_PROVINCE;
