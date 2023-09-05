@@ -1,0 +1,78 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+				   xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd"
+				   logicalFilePath="core-engine/tables.xml">
+    <property name="tablespace" value="taxolite"/>
+	<!--Test tworzenia podstawowej tabeli -->
+    <changeSet id="core-engine-2023-03-23-0102" author="kkmiecik">
+        <createTable tableName="CORE_TERYT_PROVINCE" tablespace="${tablespace}">
+            <column name="CODE" type="NVARCHAR(2)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="NAME" type="NVARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DATE_MODIFIED" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+		<createTable tableName="CORE_TERYT_PROVINCE2" tablespace="${tablespace}">
+            <column name="CODE" type="NVARCHAR(2)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="NAME" type="NVARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DATE_MODIFIED" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+	</changeSet>
+	<!--TEST preCondition (CONTINUE) i tworzenie procedur -->
+    <changeSet id="core-engine-2023-03-23-0103" author="kkmiecik">
+		<preConditions onFail="CONTINUE" onFailMessage="work">
+			<sqlCheck expectedResult = "0">
+				SELECT COUNT(*) FROM CORE_TERYT_PROVINCE;
+			</sqlCheck>
+		</preConditions>
+		<createProcedure 
+		encoding="UTF-8"
+		procedureName="FirstTest"
+		relativeToChangelogFile="true"
+		schemaName="LIQUIBASE">
+			CREATE OR REPLACE PROCEDURE DEMO_DB.LIQUIBASE.OUTPUT_MESSAGE_2("MESSAGE" VARCHAR(16777216))
+				RETURNS VARCHAR(16777216)
+				LANGUAGE SQL
+				EXECUTE AS OWNER
+				AS 'BEGIN
+					RETURN message;
+				END';
+		</createProcedure>
+		<createProcedure
+		encoding="UTF-8"
+		procedureName="SecondTest"
+		relativeToChangelogFile="true"
+		schemaName="LIQUIBASE">
+			CREATE OR REPLACE PROCEDURE right_bind(TIMESTAMP_VALUE VARCHAR)
+				RETURNS BOOLEAN
+				LANGUAGE JAVASCRIPT
+				AS
+				$$
+				var cmd = "SELECT CURRENT_DATE() > TO_TIMESTAMP(:1, 'YYYY-MM-DD HH24:MI:SS')";
+				var stmt = snowflake.createStatement(
+						{
+						sqlText: cmd,
+						binds: [TIMESTAMP_VALUE]
+						}
+						);
+				var result1 = stmt.execute();
+				result1.next();
+				return result1.getColumnValue(1);
+				$$
+				;
+		</createProcedure>
+	</changeSet>
+</databaseChangeLog>

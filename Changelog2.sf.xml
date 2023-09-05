@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog logicalFilePath="core-engine/tables.xml"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <property name="tablespace" value="taxolite"/>
+	<!--CHANGESET TWORZENIE TABELI-->
+	<changeSet id="core-engine-2023-03-20-3011" author="kkmiecik">
+		<createTable tableName="Testowa_tabela" tablespace="${tablespace}">
+            <column name="id" type="INTEGER">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="Nazwa" type="NVARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DATE_MODIFIED" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+	</changeSet>
+	<!--CHANGESET TEST preCondition (MARK_RAN) czy działa i INSERT do tabeli -->
+    <changeSet id="core-engine-2023-03-20-3021" author="kkmiecik">
+		<preConditions onFail="MARK_RAN" onErrorMessage="Cos tu sie nie zgadza kolego" onFailMessage="Cos tu sie nie zgadza kolego">
+			<sqlCheck expectedResult="2">
+				SELECT COUNT(*) FROM Testowa_tabela WHERE nazwa='fooFoo';
+			</sqlCheck>
+		</preConditions>
+		<insert tableName="Testowa_tabela">
+			<column name="id" value="1"/>
+			<column name="DATE_MODIFIED" value="2021-05-26"/>
+			<column name="Nazwa" value="test1"/>
+		</insert>
+		<insert tableName="Testowa_tabela">
+			<column name="id" value="12"/>
+			<column name="DATE_MODIFIED" value="2019-05-12"/>
+			<column name="Nazwa" value="test2"/>
+		</insert>	
+		<insert tableName="Testowa_tabela">	
+			<column name="id" value="33"/>
+			<column name="DATE_MODIFIED" value="2020-11-16"/>
+			<column name="Nazwa" value="test3"/>
+		</insert>	
+		<insert tableName="Testowa_tabela">			
+			<column name="id" value="66"/>
+			<column name="DATE_MODIFIED" value="2017-02-01"/>
+			<column name="Nazwa" value="test4"/>
+		</insert>	
+		<insert tableName="Testowa_tabela">			
+			<column name="id" value="88"/>
+			<column name="DATE_MODIFIED" value="2018-07-12"/>
+			<column name="Nazwa" value="test5"/>
+		</insert>	
+		<insert tableName="Testowa_tabela">			
+			<column name="id" value="2A"/>
+			<column name="DATE_MODIFIED" value="2023-02-01"/>
+			<column name="Nazwa" value="test6"/>
+		</insert>
+		<insert tableName="Testowa_tabela">			
+			<column name="id" value="AA"/>
+			<column name="DATE_MODIFIED" value="2023-02-02"/>
+			<column name="Nazwa" value="test7"/>
+		</insert>
+		<insert tableName="Testowa_tabela">			
+			<column name="id" value="BB"/>
+			<column name="DATE_MODIFIED" value="2023-02-03"/>
+			<column name="Nazwa" value="test8"/>
+		</insert>
+		<insert tableName="Testowa_tabela">			
+			<column name="id" value="CC"/>
+			<column name="DATE_MODIFIED" value="2023-02-03"/>
+			<column name="Nazwa" value="test9"/>
+		</insert>
+	</changeSet>
+    
+</databaseChangeLog>
