@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+      environment {
+      LIQUIBASE_HOME = "${tool 'Liquibasetarball'}"
+  }
+    stages {
+        
+    // stage('Simple check if liquibase works') {
+    //     steps {
+    //                   withCredentials([usernamePassword(credentialsId: 'a2060bfe-19f6-4697-9d69-325032bc7448', passwordVariable: 'password', usernameVariable: 'username')]) {
+    //             sh '$LIQUIBASE_HOME/liquibase'
+    //       }
+    //     }
+    // }
+
+    stage('Migration status') {
+        steps {
+            withCredentials([file(credentialsId: 'liquibase.docker.properties', variable: 'properties'), usernamePassword(credentialsId: 'a2060bfe-19f6-4697-9d69-325032bc7448', passwordVariable: 'password', usernameVariable: 'username')]) {
+                sh '$LIQUIBASE_HOME/liquibase status --username=$username  --password=$password --defaultsFile=$properties'
+                //sh '$LIQUIBASE_HOME/liquibase status --username=$username  --password=$password --defaultsFile=$WORKSPACE/defaults/liquibase.docker.properties'
+          }
+        }        
+    }
+        
+    }
+}

@@ -1,0 +1,19 @@
+pipeline {
+  agent any
+  stages {
+    stage('Status') {
+      steps {
+
+          liquibaseUpdate (
+            credentialsId: 'a2060bfe-19f6-4697-9d69-325032bc7448',
+            liquibasePropertiesPath: "${WORKSPACE}/defaults/liquibase.docker.properties"
+          )
+      }
+    }
+  }
+  post {
+    always {
+        archiveArtifacts artifacts: '*.xml', followSymlinks: false, onlyIfSuccessful: true
+    }
+  }  
+}
