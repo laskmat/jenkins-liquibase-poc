@@ -2,6 +2,7 @@ pipeline {
     agent any
       environment {
       LIQUIBASE_HOME = "${tool 'Liquibase'}"
+      defaultFile = "$WORKSPACE/defaults/liquibase.docker.properties"
   }
     stages {
         
