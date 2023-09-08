@@ -14,7 +14,7 @@ pipeline {
 
      stage('Migration status') {
          steps {
-             withCredentials([file(credentialsId: 'liquibase.docker.properties', variable: 'properties'), file(credentialsId: '2b369a05-7b50-49cc-b397-79015ffddfb8', variable: 'default')]) {
+             withCredentials([file(credentialsId: '2b369a05-7b50-49cc-b397-79015ffddfb8', variable: 'properties'), usernamePassword(credentialsId: 'f85a65a1-4a5f-405c-ab2e-e8ea2c489d58', passwordVariable: 'password', usernameVariable: 'username')]) {
                  sh '$LIQUIBASE_HOME/liquibase status --username=$username  --password=$password --defaultsFile=$properties'
            }
          }        
