@@ -5,21 +5,20 @@ pipeline {
   }
     stages {
         
-     stage('Simple check if liquibase works') {
-         steps {
-                        withCredentials([gitUsernamePassword(credentialsId: 'f85a65a1-4a5f-405c-ab2e-e8ea2c489d58', gitToolName: 'Default'), file(credentialsId: '2b369a05-7b50-49cc-b397-79015ffddfb8', variable: 'default')]) {
-                sh '$LIQUIBASE_HOME/liquibase --defaultsFile=$default'}
-         }
-    }
+    //  stage('Simple check if liquibase works') {
+    //      steps {
+    //                     withCredentials([gitUsernamePassword(credentialsId: 'f85a65a1-4a5f-405c-ab2e-e8ea2c489d58', gitToolName: 'Default'), file(credentialsId: '2b369a05-7b50-49cc-b397-79015ffddfb8', variable: 'default')]) {
+    //             sh '$LIQUIBASE_HOME/liquibase --defaultsFile=$default'}
+    //      }
+    // }
 
-    // stage('Migration status') {
-    //     steps {
-    //         withCredentials([file(credentialsId: 'liquibase.docker.properties', variable: 'properties'), file(credentialsId: '2b369a05-7b50-49cc-b397-79015ffddfb8', variable: 'default')]) {
-    //             sh '$LIQUIBASE_HOME/liquibase status --username=$username  --password=$password --defaultsFile=$properties'
-    //             //sh '$LIQUIBASE_HOME/liquibase status --username=$username  --password=$password --defaultsFile=$WORKSPACE/defaults/liquibase.docker.properties'
-    //       }
-    //     }        
-    //}
+     stage('Migration status') {
+         steps {
+             withCredentials([file(credentialsId: 'liquibase.docker.properties', variable: 'properties'), file(credentialsId: '2b369a05-7b50-49cc-b397-79015ffddfb8', variable: 'default')]) {
+                 sh '$LIQUIBASE_HOME/liquibase status --username=$username  --password=$password --defaultsFile=$properties'
+           }
+         }        
+    }
         
     }
 }
