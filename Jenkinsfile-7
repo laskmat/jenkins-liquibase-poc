@@ -1,7 +1,7 @@
 pipeline {
     agent any
       environment {
-      LIQUIBASE_HOME = "${tool 'Liquibasetarball'}"
+      LIQUIBASE_HOME = "${tool 'Liquibase'}"
   }
     stages {
         
